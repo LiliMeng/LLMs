@@ -144,6 +144,51 @@ print(output.shape)  # Output shape: (batch_size, seq_length, vocab_size)
 
 This implementation simplifies some aspects of GPT-1 for clarity and learning purposes. For a production-grade model, additional components such as training loops, data preprocessing, and optimization routines would be required.
 
+### Key Differences between BERT and GPT-1:
+BERT (Bidirectional Encoder Representations from Transformers) and GPT-1 (Generative Pre-trained Transformer 1) are both influential language models developed by Google AI and OpenAI, respectively. They have different architectures and training objectives, leading to distinct use cases and strengths.
+
+#### 1. **Architecture**:
+- **BERT**:
+  - **Encoder-Only Architecture**: BERT uses only the encoder part of the transformer architecture.
+  - **Bidirectional**: BERT processes the text in both directions (left-to-right and right-to-left) simultaneously, allowing it to capture context from both directions.
+  - **Token Masking**: BERT is trained using a masked language model (MLM) objective, where some percentage of the input tokens are masked, and the model learns to predict these masked tokens based on their context.
+
+- **GPT-1**:
+  - **Decoder-Only Architecture**: GPT-1 uses only the decoder part of the transformer architecture.
+  - **Unidirectional**: GPT-1 processes the text in a left-to-right manner, predicting the next word based on the previous words in the sequence.
+  - **Next Token Prediction**: GPT-1 is trained using a language model (LM) objective, where it learns to predict the next token in a sequence given the previous tokens.
+
+#### 2. **Training Objectives**:
+- **BERT**:
+  - **Masked Language Modeling (MLM)**: During training, BERT randomly masks some tokens in the input and trains the model to predict these masked tokens based on their context.
+  - **Next Sentence Prediction (NSP)**: BERT is also trained to predict whether a given sentence B follows sentence A, which helps the model understand sentence relationships.
+
+- **GPT-1**:
+  - **Autoregressive Language Modeling**: GPT-1 is trained to predict the next token in a sequence, making it naturally suited for text generation tasks.
+
+#### 3. **Use Cases**:
+- **BERT**:
+  - **Natural Language Understanding (NLU)**: BERT excels in tasks that require a deep understanding of the text, such as question answering, sentiment analysis, named entity recognition, and text classification.
+  - **Bidirectional Context**: Its ability to capture bidirectional context makes it particularly powerful for understanding the meaning and context of words within a sentence.
+
+- **GPT-1**:
+  - **Text Generation**: GPT-1 is primarily used for generating coherent and contextually relevant text, making it suitable for applications like language modeling, text completion, and conversational AI.
+  - **Sequential Context**: Its unidirectional nature allows it to effectively generate text in a coherent sequence.
+
+### Summary of Differences:
+
+- **BERT**:
+  - Encoder-only, bidirectional
+  - Masked language modeling and next sentence prediction objectives
+  - Excellent for NLU tasks
+
+- **GPT-1**:
+  - Decoder-only, unidirectional
+  - Autoregressive language modeling objective
+  - Primarily used for text generation
+
+These differences highlight how BERT and GPT-1 are optimized for different types of NLP tasks, leveraging their unique architectures and training methodologies.
+
 ## Language Models are Unsupervised Multitask Learners (GPT-2 by OpenAI)
 
 [Paper](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
