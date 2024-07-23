@@ -2,7 +2,7 @@
 ## Improving Language Understanding by Generative Pre-Training (GPT-1 by OpenAI)
 [Paper](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
 
-The paper "Improving Language Understanding by Generative Pre-Training" by Alec Radford, Karthik Narasimhan, Tim Salimans, and Ilya Sutskever, introduces the Generative Pre-trained Transformer (GPT). This work demonstrates how pre-training a transformer model on a large corpus of text can significantly enhance the model's performance on a variety of natural language processing (NLP) tasks through fine-tuning.
+The paper introduces the Generative Pre-trained Transformer (GPT). This work demonstrates how pre-training a transformer model on a large corpus of text can significantly enhance the model's performance on a variety of natural language processing (NLP) tasks through fine-tuning.
 
 ### Key Contributions:
 
