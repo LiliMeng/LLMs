@@ -189,6 +189,35 @@ BERT (Bidirectional Encoder Representations from Transformers) and GPT-1 (Genera
 
 These differences highlight how BERT and GPT-1 are optimized for different types of NLP tasks, leveraging their unique architectures and training methodologies.
 
+### Why not use encoder attention layer to learn embedding in GPT-1?
+Using an attention encoder layer to learn embeddings for GPT-1 was not the chosen approach because of several design and objective considerations. Here’s a detailed explanation of why GPT-1 was designed with a decoder-only architecture and the implications of this choice:
+
+### Design and Objective Considerations:
+
+1. **Training Objective Alignment**:
+   - **GPT-1**: The goal was to create a generative model that excels at text generation tasks. The decoder-only architecture with its autoregressive nature aligns perfectly with this objective. The model predicts the next word in a sequence, making it inherently suited for tasks like text completion, generation, and language modeling.
+   - **Encoder Layers**: Encoders are typically designed to understand and process entire input sequences simultaneously, capturing bidirectional context. This is more aligned with tasks that require understanding and interpreting text, such as classification, sentiment analysis, and other comprehension tasks, rather than generating text.
+
+2. **Architectural Simplicity and Focus**:
+   - **Simplicity**: A decoder-only model is simpler and more focused on its task of generation. It reduces the complexity that comes with integrating encoder-decoder interactions. By focusing on a single-directional flow, it simplifies the training and inference processes.
+   - **Efficiency**: Decoding involves sequential predictions, which fit naturally with an autoregressive process. Introducing an encoder layer would add complexity and potential redundancy in a model meant to generate sequences one token at a time.
+
+3. **Different Use Cases**:
+   - **BERT**: Uses an encoder-only architecture to perform well on understanding tasks. It is designed to create context-aware embeddings of input sequences, which are then used for various downstream tasks requiring comprehension.
+   - **GPT-1**: Uses a decoder-only architecture to excel at generating coherent and contextually relevant text. The focus is on leveraging the learned sequential patterns in the training data to predict future tokens.
+
+### Technical and Conceptual Points:
+
+1. **Bidirectional vs. Unidirectional Context**:
+   - **BERT’s Bidirectional Context**: BERT’s encoder learns embeddings that consider context from both directions (past and future tokens). This is beneficial for understanding tasks but introduces challenges for autoregressive generation tasks, where predicting the next token is the goal.
+   - **GPT-1’s Unidirectional Context**: GPT-1’s decoder learns embeddings in a left-to-right manner, suitable for generating the next word based on previous words. This unidirectional approach is efficient and directly supports the generative objective.
+
+2. **Embedding Learning**:
+   - **BERT’s Approach**: Uses attention in encoders to learn embeddings by considering all positions in the input sequence simultaneously, enabling it to understand the full context.
+   - **GPT-1’s Approach**: Learns embeddings that support the autoregressive generation process, focusing on maintaining the flow of text in a logical and coherent manner.
+
+In conclusion, the design choice for GPT-1 to use a decoder-only architecture was driven by the goal of optimizing text generation capabilities, aligning the training objectives with the intended use cases, and maintaining architectural simplicity and efficiency.
+
 ## Language Models are Unsupervised Multitask Learners (GPT-2 by OpenAI)
 
 [Paper](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
