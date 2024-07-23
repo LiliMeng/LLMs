@@ -11,9 +11,14 @@ The paper introduces the Generative Pre-trained Transformer (GPT). This work dem
 
 2. **Unsupervised Pre-Training**:
    - GPT is pre-trained on a large corpus of text (BooksCorpus), learning to predict the next word in a sentence. This unsupervised learning phase helps the model capture a wide range of language patterns and knowledge.
+<img width="1157" alt="Screenshot 2024-07-23 at 4 44 29 PM" src="https://github.com/user-attachments/assets/c3c8ef9e-d272-4cee-be22-8b39435c51f4">
 
 3. **Supervised Fine-Tuning**:
    - After pre-training, GPT is fine-tuned on specific tasks with labeled data. The pre-trained model parameters provide a strong starting point, allowing the model to achieve better performance with less task-specific data. It's found that including language modeling as an auxiliary objective to the fine-tuning helped learning by (a) improving generalization of the supervised model, and (b) accelerating convergence.
+   - 
+  <img width="1143" alt="Screenshot 2024-07-23 at 4 44 41 PM" src="https://github.com/user-attachments/assets/e7621fdb-73f7-4296-85c0-02c2457d1c05">
+
+     
 
 4. **Task Performance**:
    - The paper shows that GPT achieves state-of-the-art results on several NLP benchmarks, including natural language inference (NLI), question answering (QA), and semantic similarity tasks.
