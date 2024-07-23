@@ -30,7 +30,119 @@ The paper introduces the Generative Pre-trained Transformer (GPT). This work dem
 ### Conclusion:
 "Improving Language Understanding by Generative Pre-Training" highlights the potential of generative pre-training as a powerful method for improving language understanding. By leveraging large-scale unsupervised pre-training, GPT can generalize well across various NLP tasks, reducing the need for extensive labeled data and task-specific architectures.
 
-For more details, you can access the full paper [here](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf).
+## GPT-1: Decoder only Architecture
+A decoder-only architecture, such as the one used in GPT-1, does include embeddings. The embeddings are a crucial part of the model, responsible for converting input tokens (words, subwords, or characters) into continuous vector representations that the model can process.
+
+### Key Components of the Decoder-Only Architecture:
+
+1. **Token Embeddings**:
+   - The input tokens are mapped to dense vectors using an embedding matrix. This process translates discrete tokens into continuous-valued vectors, which are then fed into the transformer layers.
+   - Each token in the input sequence has a corresponding embedding vector.
+
+2. **Positional Embeddings**:
+   - Since transformers do not have a built-in notion of token order, positional embeddings are added to the token embeddings to provide information about the position of each token in the sequence.
+   - This allows the model to consider the order of tokens, which is crucial for understanding the context in natural language.
+
+3. **Transformer Layers**:
+   - The core of the architecture consists of multiple transformer decoder layers. Each layer has a multi-head self-attention mechanism and position-wise feed-forward networks.
+   - The self-attention mechanism allows the model to focus on different parts of the input sequence when producing the output.
+
+### How It Works in GPT-1:
+
+1. **Input Tokens**: The input text is tokenized into a sequence of tokens.
+2. **Embedding Layer**: Each token is mapped to its corresponding embedding vector, and positional embeddings are added to these token embeddings.
+3. **Transformer Decoder Layers**: The embedded sequence is passed through several transformer decoder layers, where self-attention mechanisms allow the model to weigh the importance of different tokens in the sequence.
+4. **Output**: The final layer generates the output sequence, predicting the next token in the sequence based on the previous tokens.
+
+### Summary:
+- **Embeddings**: Both token and positional embeddings are essential in the decoder-only architecture to provide meaningful vector representations and positional information.
+- **Decoder-Only Architecture**: While it primarily focuses on generating sequences, it relies on embeddings to handle input tokens and their positions effectively.
+
+Embeddings are a fundamental part of the architecture, ensuring that the model can effectively process and generate natural language sequences.
+
+Here's a simplified implementation of GPT-1 in PyTorch, focusing on the key components such as embeddings, transformer decoder layers, and positional encodings. This code is meant to illustrate the structure and primary components of GPT-1:
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import math
+
+class GPT1(nn.Module):
+    def __init__(self, vocab_size, d_model, nhead, num_layers, max_seq_length, dropout=0.1):
+        super(GPT1, self).__init__()
+        self.token_embedding = nn.Embedding(vocab_size, d_model)
+        self.position_embedding = nn.Embedding(max_seq_length, d_model)
+        
+        decoder_layer = nn.TransformerDecoderLayer(d_model, nhead, dim_feedforward=4*d_model, dropout=dropout)
+        self.transformer_decoder = nn.TransformerDecoder(decoder_layer, num_layers)
+        
+        self.fc_out = nn.Linear(d_model, vocab_size)
+        self.dropout = nn.Dropout(dropout)
+        
+        self._init_weights()
+
+    def _init_weights(self):
+        nn.init.normal_(self.token_embedding.weight, mean=0, std=0.02)
+        nn.init.normal_(self.position_embedding.weight, mean=0, std=0.02)
+        nn.init.normal_(self.fc_out.weight, mean=0, std=0.02)
+        nn.init.constant_(self.fc_out.bias, 0)
+
+    def forward(self, x, memory):
+        seq_length = x.size(1)
+        position_ids = torch.arange(0, seq_length, dtype=torch.long, device=x.device)
+        position_ids = position_ids.unsqueeze(0).expand_as(x)
+        
+        token_embeddings = self.token_embedding(x)
+        position_embeddings = self.position_embedding(position_ids)
+        
+        x = self.dropout(token_embeddings + position_embeddings)
+        x = x.permute(1, 0, 2)  # Convert to (seq_length, batch_size, d_model) for Transformer
+        
+        tgt_mask = nn.Transformer.generate_square_subsequent_mask(seq_length).to(x.device)
+        
+        output = self.transformer_decoder(x, memory, tgt_mask=tgt_mask)
+        output = output.permute(1, 0, 2)  # Convert back to (batch_size, seq_length, d_model)
+        
+        logits = self.fc_out(output)
+        return logits
+
+# Hyperparameters
+vocab_size = 50257  # Example vocab size (for GPT-1)
+d_model = 768  # Dimension of the model
+nhead = 12  # Number of attention heads
+num_layers = 12  # Number of transformer layers
+max_seq_length = 512  # Maximum sequence length
+dropout = 0.1  # Dropout rate
+
+# Example usage
+model = GPT1(vocab_size, d_model, nhead, num_layers, max_seq_length, dropout)
+input_ids = torch.randint(0, vocab_size, (2, max_seq_length))  # Example input (batch_size, seq_length)
+memory = torch.zeros((max_seq_length, 2, d_model))  # Example memory (seq_length, batch_size, d_model)
+
+output = model(input_ids, memory)
+print(output.shape)  # Output shape: (batch_size, seq_length, vocab_size)
+```
+
+### Explanation:
+1. **Embeddings**:
+   - `token_embedding`: Embeds input tokens.
+   - `position_embedding`: Embeds positional information to retain the order of tokens.
+
+2. **Transformer Decoder**:
+   - `nn.TransformerDecoderLayer`: Defines a single layer of the transformer decoder.
+   - `nn.TransformerDecoder`: Stacks multiple decoder layers.
+
+3. **Forward Pass**:
+   - The input tokens are embedded and summed with their positional embeddings.
+   - The embeddings are then passed through the transformer decoder.
+   - The output is transformed through a linear layer to produce logits for each token in the vocabulary.
+
+4. **Usage**:
+   - The model is instantiated with hyperparameters.
+   - Example input tensors are created and passed through the model to generate predictions.
+
+This implementation simplifies some aspects of GPT-1 for clarity and learning purposes. For a production-grade model, additional components such as training loops, data preprocessing, and optimization routines would be required.
 
 ## Language Models are Unsupervised Multitask Learners (GPT-2 by OpenAI)
 
