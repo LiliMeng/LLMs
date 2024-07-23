@@ -20,9 +20,12 @@ The paper introduces the Generative Pre-trained Transformer (GPT). This work dem
 
      
 
-4. **Task Performance**:
+4. **Task-specific input transformations**:
    - The paper shows that GPT achieves state-of-the-art results on several NLP benchmarks, including natural language inference (NLI), question answering (QA), and semantic similarity tasks.
    - Fine-tuning the pre-trained model on these tasks leads to significant improvements compared to training from scratch.
+  <img width="1015" alt="Screenshot 2024-07-23 at 4 48 06 PM" src="https://github.com/user-attachments/assets/c43bf81a-683a-4860-9e35-8b039233df7a">
+
+     
 
 5. **Generalization and Transfer Learning**:
    - GPT demonstrates strong transfer learning capabilities, as the pre-trained model can be adapted to various downstream tasks with minimal task-specific modifications.
