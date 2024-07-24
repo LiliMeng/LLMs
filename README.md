@@ -256,3 +256,18 @@ In conclusion, the design choice for GPT-1 to use a decoder-only architecture wa
 ### Conclusion:
 The paper concludes that high-capacity language models like GPT-2, trained on sufficiently large and varied datasets, can perform numerous NLP tasks in a zero-shot setting. This represents a significant step towards developing more general AI systems capable of learning and adapting to various tasks from natural language alone.
 
+### Is GPT-2 trained with multi-task learning objectives?
+No, GPT-2 is not explicitly trained with multi-task learning objectives. Instead, GPT-2 follows a single-task training objective: unsupervised language modeling. Here are some key points to understand this better:
+
+### Training Objective:
+- **Unsupervised Language Modeling**: GPT-2 is trained to predict the next word in a sequence given all the previous words. This is done using a maximum likelihood estimation approach where the model learns to generate the next token based on the context provided by the preceding tokens. This training objective is simple but powerful, as it enables the model to learn a wide range of linguistic patterns and structures from the training data.
+
+### Key Characteristics:
+- **Large-Scale Pre-Training**: GPT-2 is pre-trained on a diverse and large-scale corpus called WebText, which contains high-quality web pages. The vast amount of training data allows GPT-2 to learn general language representations.
+- **Zero-Shot, One-Shot, and Few-Shot Learning**: Despite being trained with a single-task objective, GPT-2 demonstrates strong zero-shot, one-shot, and few-shot learning capabilities. This means it can perform various tasks by conditioning on task-specific prompts without additional task-specific training. This flexibility arises from the model's ability to generalize the patterns learned during pre-training.
+
+### Capabilities and Performance:
+- **Generalization**: GPT-2 can generate coherent and contextually relevant text across a wide range of tasks, such as translation, summarization, question answering, and more. This is achieved through its ability to understand and generate text based on the input context.
+- **No Explicit Task-Specific Objectives**: Unlike multi-task learning models, which are trained on multiple tasks with distinct objectives, GPT-2 does not have separate training phases or objectives for different tasks. Instead, it relies on its general language modeling capabilities to adapt to various tasks.
+
+In summary, GPT-2 is trained with a single-task objective focused on unsupervised language modeling, but it exhibits strong generalization capabilities that allow it to perform well across a variety of tasks in a zero-shot or few-shot setting.
