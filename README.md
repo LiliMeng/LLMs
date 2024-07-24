@@ -1,4 +1,69 @@
 # LLMs
+
+## Evolution of GPT, GPT-2, GPT-3, GPT-4 and GPT-4o
+Here's a summary of the key differences among GPT, GPT-2, GPT-3, GPT-4, and GPT-4O:
+
+### GPT (Generative Pre-trained Transformer):
+- **Release**: June 2018
+- **Parameters**: 117 million
+- **Features**: 
+  - First model in the GPT series.
+  - Utilizes the transformer architecture.
+  - Focused on language modeling with unsupervised learning.
+  - Demonstrated that pre-training on a large corpus and fine-tuning on specific tasks can yield state-of-the-art results in NLP.
+
+### GPT-2:
+- **Release**: February 2019
+- **Parameters**: 1.5 billion
+- **Features**: 
+  - Significantly larger than GPT-1.
+  - Trained on a dataset called WebText, consisting of 8 million web pages.
+  - Demonstrated strong zero-shot learning capabilities, meaning it could perform tasks it wasn't explicitly trained for by conditioning on task-specific prompts.
+  - Concerns about misuse led to a staged release, with the full model released later.
+
+### GPT-3:
+- **Release**: June 2020
+- **Parameters**: 175 billion
+- **Features**: 
+  - Much larger model size, enabling more nuanced and coherent text generation.
+  - Trained on diverse datasets, including Common Crawl and WebText.
+  - Showcased impressive few-shot, one-shot, and zero-shot learning abilities, further improving performance on a wide range of NLP tasks without needing task-specific training data.
+  - Used for various applications, including chatbots, content generation, and code completion.
+
+### GPT-4:
+- **Release**: March 2024 (hypothetical, as OpenAI's naming convention continues sequentially)
+- **Parameters**: Unspecified but expected to be significantly larger than GPT-3.
+- **Features**: 
+  - Expected advancements in few-shot and zero-shot learning capabilities.
+  - Enhanced ability to understand and generate text with greater coherence and accuracy.
+  - Potential improvements in handling more complex queries and producing more contextually relevant responses.
+  - Likely to incorporate advancements in AI safety and ethical considerations to mitigate risks associated with misuse.
+
+### GPT-4O (OpenAI's newer models):
+- **Release**: Hypothetical future models.
+- **Parameters**: Potentially even larger than GPT-4, but specifics would depend on advancements in computational power and data availability.
+- **Features**:
+  - Emphasis on optimization for specific applications, improving efficiency and accuracy in targeted tasks.
+  - Incorporation of multi-modal capabilities, enabling the model to handle not just text but also images, audio, and other data types.
+  - Enhanced contextual understanding and memory, allowing for more sophisticated interactions and long-term coherence in dialogues.
+  - Continued focus on ethical AI, ensuring safe and responsible use of AI technologies.
+
+### Summary of Differences:
+- **Model Size**: Each subsequent version has a significantly larger number of parameters.
+- **Capabilities**: Improvements in zero-shot, one-shot, and few-shot learning, allowing for better performance on a variety of tasks without task-specific training.
+- **Applications**: Expanding use cases, including multi-modal processing, enhanced dialogue systems, and specialized applications.
+- **Ethical Considerations**: Increasing emphasis on AI safety, reducing biases, and mitigating risks associated with misuse.
+
+These differences illustrate the rapid advancements in the capabilities of GPT models, driven by increases in model size, diversity of training data, and sophisticated learning techniques.
+
+### Sources:
+- [GPT-2 Release](https://openai.com/blog/better-language-models/)
+- [GPT-3 Release](https://openai.com/blog/gpt-3-apps/)
+- [GPT-4 Expectations](https://openai.com/research/gpt-4)
+- [Discussion on Future Models](https://towardsdatascience.com/)
+
+For more detailed information, please refer to the official OpenAI blogs and research papers.
+
 ## Improving Language Understanding by Generative Pre-Training (GPT-1 by OpenAI)
 [Paper](https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf)
 
@@ -271,3 +336,5 @@ No, GPT-2 is not explicitly trained with multi-task learning objectives. Instead
 - **No Explicit Task-Specific Objectives**: Unlike multi-task learning models, which are trained on multiple tasks with distinct objectives, GPT-2 does not have separate training phases or objectives for different tasks. Instead, it relies on its general language modeling capabilities to adapt to various tasks.
 
 In summary, GPT-2 is trained with a single-task objective focused on unsupervised language modeling, but it exhibits strong generalization capabilities that allow it to perform well across a variety of tasks in a zero-shot or few-shot setting.
+
+## Language Models are Few-Shot Learners (GPT-3 by OpenAI, 2020)
