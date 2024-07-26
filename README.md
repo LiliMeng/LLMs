@@ -1,5 +1,8 @@
 # LLMs
 
+## Useful resources
+LLMs course with examples in Google Colab (link)[https://github.com/mlabonne/llm-course]
+
 ## Evolution of GPT, GPT-2, GPT-3, GPT-4 and GPT-4o
 Here's a summary of the key differences among GPT, GPT-2, GPT-3, GPT-4, and GPT-4O:
 
