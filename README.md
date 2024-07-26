@@ -338,3 +338,6 @@ No, GPT-2 is not explicitly trained with multi-task learning objectives. Instead
 In summary, GPT-2 is trained with a single-task objective focused on unsupervised language modeling, but it exhibits strong generalization capabilities that allow it to perform well across a variety of tasks in a zero-shot or few-shot setting.
 
 ## Language Models are Few-Shot Learners (GPT-3 by OpenAI, 2020)
+
+## Evolution of LLAMA
+
