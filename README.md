@@ -1,7 +1,9 @@
-# LLMs
+# LLMs-GPT Series
 
+For LLAMA Series, please refer to https://github.com/LiliMeng/Llama
 ## Useful resources
 LLMs course with examples in Google Colab (link)[https://github.com/mlabonne/llm-course]
+
 
 ## Evolution of GPT, GPT-2, GPT-3, GPT-4 and GPT-4o
 Here's a summary of the key differences among GPT, GPT-2, GPT-3, GPT-4, and GPT-4O:
@@ -342,5 +344,9 @@ In summary, GPT-2 is trained with a single-task objective focused on unsupervise
 
 ## Language Models are Few-Shot Learners (GPT-3 by OpenAI, 2020)
 
-## Evolution of LLAMA
+## Training language models to follow instructions with human feedback (InstructGPT, ChatGPT by OpenAI, 2022)
+[Paper](https://arxiv.org/pdf/2203.02155)
+<img width="1150" alt="Screenshot 2024-07-30 at 4 09 43 PM" src="https://github.com/user-attachments/assets/2c1575b3-1907-4455-903c-e8b85131dd96">
+
+
 
